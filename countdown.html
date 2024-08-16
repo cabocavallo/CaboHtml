@@ -17,6 +17,13 @@
             font-size: 48px;
             color: #00FF00; /* Testo verde chiaro */
         }
+        /* Stile per lampeggiare */
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .blinking {
+            animation: blink 1s step-start infinite;
+        }
     </style>
 </head>
 <body>
@@ -36,9 +43,26 @@
 
                 countdownElement.textContent = minutes + ":" + seconds;
 
+                // Cambiare colore in giallo a 60 secondi
+                if (time <= 60 && time > 30) {
+                    countdownElement.style.color = '#FFFF00'; // Giallo
+                }
+
+                // Cambiare colore in rosso a 30 secondi
+                if (time <= 30 && time > 10) {
+                    countdownElement.style.color = '#FF0000'; // Rosso
+                }
+
+                // Lampeggiare a 10 secondi
+                if (time <= 10) {
+                    countdownElement.classList.add('blinking');
+                }
+
+                // Ricaricare la pagina a 0 secondi
                 if (--time < 0) {
                     clearInterval(countdownInterval);
                     countdownElement.textContent = "00:00";
+                    location.reload(); // Ricarica la pagina
                 }
             }, 1000);
         }
