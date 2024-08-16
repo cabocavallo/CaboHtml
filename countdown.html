@@ -27,10 +27,10 @@
     </style>
 </head>
 <body>
-    <div id="countdown">2:00</div>
+    <div id="countdown">10:00</div>
 
     <script>
-        var time = 120; // Tempo in secondi (10 minuti)
+        var time = 600; // Tempo in secondi (10 minuti)
         var countdownElement = document.getElementById("countdown");
 
         function startCountdown() {
@@ -58,11 +58,11 @@
                     countdownElement.classList.add('blinking');
                 }
 
-                // Ricaricare la pagina a 0 secondi
+                // Ricaricare la dashboard a 0 secondi
                 if (--time < 0) {
                     clearInterval(countdownInterval);
                     countdownElement.textContent = "00:00";
-                    location.reload(); // Ricarica la pagina
+                    parent.location.reload(); // Ricarica l'intera dashboard di Google Data Studio
                 }
             }, 1000);
         }
