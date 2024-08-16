@@ -1,1 +1,49 @@
-<!DOCTYPE html><html><head>    <style>        #countdown {            font-family: Arial, sans-serif;            font-size: 48px;            color: #333;        }    </style></head><body>    <div id="countdown">10:00</div>    <script>        var time = 600; // Tempo in secondi (10 minuti)        var countdownElement = document.getElementById("countdown");        function startCountdown() {            var minutes, seconds;            var countdownInterval = setInterval(function () {                minutes = Math.floor(time / 60);                seconds = time % 60;                seconds = seconds < 10 ? '0' + seconds : seconds;                countdownElement.textContent = minutes + ":" + seconds;                if (--time < 0) {                    clearInterval(countdownInterval);                    countdownElement.textContent = "00:00";                }            }, 1000);        }        startCountdown();    </script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Collegamento al font Oswald da Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap">
+    <style>
+        body {
+            background-color: black; /* Sfondo nero */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Imposta l'altezza della pagina a 100% della vista */
+        }
+        #countdown {
+            font-family: 'Oswald', sans-serif; /* Font Oswald */
+            font-size: 48px;
+            color: #00FF00; /* Testo verde chiaro */
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">10:00</div>
+
+    <script>
+        var time = 600; // Tempo in secondi (10 minuti)
+        var countdownElement = document.getElementById("countdown");
+
+        function startCountdown() {
+            var minutes, seconds;
+            var countdownInterval = setInterval(function () {
+                minutes = Math.floor(time / 60);
+                seconds = time % 60;
+
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                countdownElement.textContent = minutes + ":" + seconds;
+
+                if (--time < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.textContent = "00:00";
+                }
+            }, 1000);
+        }
+
+        startCountdown();
+    </script>
+</body>
+</html>
